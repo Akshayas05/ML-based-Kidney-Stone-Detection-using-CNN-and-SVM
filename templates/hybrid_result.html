@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="result-card white-theme">
+
+    <h2>Hybrid AI Result</h2>
+
+    <h3>Clinical Severity: {{ severity }}</h3>
+
+    <h3>CT Result: {{ ct_label }}</h3>
+    <p><strong>Confidence:</strong> {{ confidence }}%</p>
+
+    <div class="image-row">
+        <div>
+            <h4>Original CT</h4>
+            <img src="/{{ original_image }}" width="300">
+        </div>
+        <div>
+            <h4>AI Heatmap</h4>
+            <img src="/{{ heatmap_image }}" width="300">
+        </div>
+    </div>
+
+    <hr style="margin:30px 0;">
+
+    <h3>Final AI Conclusion</h3>
+    <p>{{ hybrid_result }}</p>
+
+</div>
+
+{% endblock %}

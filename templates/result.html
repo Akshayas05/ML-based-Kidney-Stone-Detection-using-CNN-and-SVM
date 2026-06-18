@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="result-card white-theme">
+    <h2>Prediction Result</h2>
+
+    {% if type == "clinical" %}
+
+    <h3 class="prediction">{{ prediction }}</h3>
+
+    <p class="severity">
+        Severity Level:
+        <span class="badge {{ severity|lower }}">{{ severity }}</span>
+    </p>
+
+    <h4>Natural Suggestions:</h4>
+    <ul class="suggestion-list">
+        {% for suggestion in suggestions %}
+        <li>{{ suggestion }}</li>
+        {% endfor %}
+    </ul>
+
+    {% elif type == "ct" %}
+
+    <h3 class="prediction">{{ prediction }}</h3>
+
+    <p><strong>Confidence:</strong> {{ confidence }}%</p>
+
+    <p><strong>AI Explanation:</strong> {{ explanation }}</p>
+
+    <div class="image-row">
+        <div>
+            <h4>Original CT</h4>
+            <img src="/{{ original_image }}" width="300">
+        </div>
+        <div>
+            <h4>Heatmap (AI Focus Area)</h4>
+            <img src="/{{ heatmap_image }}" width="300">
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% if report_id %}
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="{{ url_for('report_page', id=report_id) }}" class="btn primary">
+            View Formal Report
+        </a>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

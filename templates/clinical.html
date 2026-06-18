@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Clinical Data Prediction</h2>
+
+<form method="POST" class="form-card">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Specific Gravity</label>
+            <input type="number" step="0.001" name="gravity" required>
+        </div>
+
+        <div class="form-group">
+            <label>Urine pH</label>
+            <input type="number" step="0.01" name="ph" required>
+        </div>
+
+        <div class="form-group">
+            <label>Osmolality</label>
+            <input type="number" step="0.01" name="osmo" required>
+        </div>
+
+        <div class="form-group">
+            <label>Conductivity</label>
+            <input type="number" step="0.01" name="cond" required>
+        </div>
+
+        <div class="form-group">
+            <label>Urea</label>
+            <input type="number" step="0.01" name="urea" required>
+        </div>
+
+        <div class="form-group">
+            <label>Calcium</label>
+            <input type="number" step="0.01" name="calc" required>
+        </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+        <button type="submit" class="btn primary">Predict Now</button>
+    </div>
+
+</form>
+{% endblock %}

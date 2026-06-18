@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align:center;">Hybrid AI Analysis</h2>
+
+<form method="POST" enctype="multipart/form-data" class="form-card">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Specific Gravity</label>
+            <input type="number" step="0.001" name="gravity" required>
+        </div>
+
+        <div class="form-group">
+            <label>Urine pH</label>
+            <input type="number" step="0.01" name="ph" required>
+        </div>
+
+        <div class="form-group">
+            <label>Osmolality</label>
+            <input type="number" step="0.01" name="osmo" required>
+        </div>
+
+        <div class="form-group">
+            <label>Conductivity</label>
+            <input type="number" step="0.01" name="cond" required>
+        </div>
+
+        <div class="form-group">
+            <label>Urea</label>
+            <input type="number" step="0.01" name="urea" required>
+        </div>
+
+        <div class="form-group">
+            <label>Calcium</label>
+            <input type="number" step="0.01" name="calc" required>
+        </div>
+
+    </div>
+
+    <div style="margin-top:30px;">
+        <label>Upload CT Image</label>
+        <input type="file" name="image" accept="image/*" required>
+    </div>
+
+    <div style="margin-top:30px; text-align:center;">
+        <button type="submit" class="btn hybrid">Run Hybrid AI</button>
+    </div>
+
+</form>
+
+{% endblock %}

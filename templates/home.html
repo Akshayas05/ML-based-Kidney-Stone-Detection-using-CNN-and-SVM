@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero-section">
+    <h1>NephroFusion AI: Advanced Kidney Stone Detection</h1>
+    <p>
+        Multi-Modal AI Platform using Clinical Data (SVM),
+        CT Scan Imaging (CNN), and Hybrid Fusion Analysis
+        for enhanced diagnostic reliability.
+    </p>
+
+    <div class="action-buttons">
+
+        {% if current_user.is_authenticated %}
+
+        <a href="{{ url_for('clinical') }}" class="btn primary">
+            <i class="fas fa-notes-medical"></i> Clinical Analysis
+        </a>
+
+        <a href="{{ url_for('ct') }}" class="btn secondary">
+            <i class="fas fa-x-ray"></i> CT Scan Analysis
+        </a>
+
+        <a href="{{ url_for('hybrid') }}" class="btn hybrid">
+            <i class="fas fa-brain"></i> Hybrid AI Analysis
+        </a>
+
+        {% else %}
+
+        <a href="{{ url_for('login') }}" class="btn primary">
+            Login to Start
+        </a>
+
+        <a href="{{ url_for('register') }}" class="btn secondary">
+            Register Account
+        </a>
+
+        {% endif %}
+
+    </div>
+</div>
+
+<div class="features-grid">
+
+    <div class="feature-card">
+        <i class="fas fa-file-medical-alt"></i>
+        <h3>Clinical Risk Estimation</h3>
+        <p>
+            Predict kidney stone risk using structured biochemical
+            parameters with severity classification.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fas fa-microscope"></i>
+        <h3>Radiological CT Detection</h3>
+        <p>
+            Deep Learning-based detection of calcified regions
+            in CT scans with Grad-CAM explainability.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fas fa-brain"></i>
+        <h3>Hybrid AI Fusion</h3>
+        <p>
+            Multi-modal decision engine combining clinical
+            severity and CT evidence for intelligent diagnosis.
+        </p>
+    </div>
+
+    
+
+</div>
+
+{% endblock %}

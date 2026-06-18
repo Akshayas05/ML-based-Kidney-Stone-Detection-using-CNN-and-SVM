@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" class="form-card" style="text-align:center;">
+
+    <div class="form-group">
+        <label>Upload CT Scan (JPG/PNG)</label>
+        <input type="file" name="image" accept="image/*" required>
+    </div>
+
+    <div style="margin-top:30px;">
+        <button type="submit" class="btn secondary">Analyze Scan</button>
+    </div>
+
+</form>
+{% endblock %}

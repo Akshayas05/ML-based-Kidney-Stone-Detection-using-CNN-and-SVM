@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Prediction History</h2>
+
+{% if records %}
+<div class="table-container">
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Prediction</th>
+                <th>Severity / Confidence</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>{{ record.type }}</td>
+                <td>
+                    <span class="badge {% if 'Detected' in record.prediction %}high{% else %}low{% endif %}">
+                        {{ record.prediction }}
+                    </span>
+                </td>
+                <td>
+                    {% if record.type == 'Clinical' %}
+                    {{ record.severity }}
+
+                    {% elif record.type == 'CT' %}
+                        {{ record.confidence }}%
+
+                    {% elif record.type == 'Hybrid' %}
+                        Severity: {{ record.severity }} <br>
+                        Confidence: {{ record.confidence }}%
+
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('report_page', id=record.id) }}" class="btn-sm">View Report</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No history found. Start by making a prediction!</p>
+{% endif %}
+
+{% endblock %}
